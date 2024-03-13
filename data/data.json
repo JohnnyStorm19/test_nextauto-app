@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "name": "BMW",
+    "model": "X3",
+    "type": "suv",
+    "sales": [
+      {
+        "date": "2023-04-01",
+        "reseller": "shop-one"
+      },
+      {
+        "date": "2023-05-21",
+        "reseller": "shop-two"
+      }
+    ]
+  },
+
+  {
+    "id": 2,
+    "name": "Audi",
+    "model": "A3",
+    "type": "hatchback",
+    "sales": [
+      {
+        "date": "2023-01-23",
+        "reseller": "shop-two"
+      },
+      {
+        "date": "2023-04-22",
+        "reseller": "shop-one"
+      },
+      {
+        "date": "2023-09-22",
+        "reseller": "shop-two"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tesla",
+    "model": "Model 3",
+    "type": "electric",
+    "sales": [
+      {
+        "date": "2023-02-27",
+        "reseller": "shop-two"
+      },
+      {
+        "date": "2023-03-27",
+        "reseller": "shop-two"
+      },
+      {
+        "date": "2023-04-27",
+        "reseller": "shop-one"
+      },
+      {
+        "date": "2023-05-27",
+        "reseller": "shop-two"
+      },
+      {
+        "date": "2023-06-27",
+        "reseller": "shop-two"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Audi",
+    "model": "Q5",
+    "type": "suv",
+    "sales": [
+      { "date": "2023-06-15", "reseller": "audi-de-one" },
+      { "date": "2023-07-20", "reseller": "audi-dealer-two" }
+    ]
+  },
+
+  {
+    "id": 5,
+    "name": "Toyota",
+    "model": "Rav4",
+    "type": "suv",
+    "sales": [
+      { "date": "2023-08-10", "reseller": "toyota-dealer-one" },
+      { "date": "2023-09-05", "reseller": "toyota-dealer-two" },
+      { "date": "2023-10-05", "reseller": "toyota-dealer-two" },
+      { "date": "2023-11-05", "reseller": "toyota-dealer-two" },
+      { "date": "2023-12-05", "reseller": "toyota-dealer-two" }
+    ]
+  },
+
+  {
+    "id": 6,
+    "name": "Mercedes-Benz",
+    "model": "GLC",
+    "type": "sedan",
+    "sales": [
+      { "date": "2023-02-25", "reseller": "mercedes-dealer-two" },
+      { "date": "2023-03-25", "reseller": "mercedes-dealer-two" },
+      { "date": "2023-10-18", "reseller": "mercedes-dealer-one" },
+      { "date": "2023-11-25", "reseller": "mercedes-dealer-two" }
+    ]
+  },
+
+  {
+    "id": 7,
+    "name": "Volvo",
+    "model": "XC60",
+    "type": "coupe",
+    "sales": [
+      { "date": "2023-12-05", "reseller": "volvo-dealer-one" },
+      { "date": "2024-01-03", "reseller": "volvo-dealer-two" }
+    ]
+  },
+
+  {
+    "id": 8,
+    "name": "Lexus",
+    "model": "RX",
+    "type": "sedan",
+    "sales": [
+      { "date": "2024-02-15", "reseller": "lexus-dealer-one" },
+      { "date": "2024-03-20", "reseller": "lexus-dealer" },
+      { "date": "2024-04-20", "reseller": "lexus-dealer" },
+      { "date": "2024-05-20", "reseller": "lexus-dealer" },
+      { "date": "2024-06-20", "reseller": "lexus-dealer" }
+    ]
+  },
+
+  {
+    "id": 9,
+    "name": "Porsche",
+    "model": "Cayenne",
+    "type": "suv",
+    "sales": [{ "date": "2024-04-10", "reseller": "porsche-dealer-one" }]
+  },
+
+  {
+    "id": 10,
+    "name": "Land Rover",
+    "model": "Discovery",
+    "type": "suv",
+    "sales": [{ "date": "2024-06-20", "reseller": "land-rover-dealer-one" }]
+  }
+]
