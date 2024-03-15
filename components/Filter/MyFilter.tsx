@@ -19,9 +19,10 @@ import { getAllMarks, getAllModels, getAllTypes, getResellers } from "@/services
 type TMyFilterProps = {
   filterValues: TFilterState
   changeFilterValues: (obj: TFilterState) => void
+  updateFiltered: (bool: boolean) => void
 }
 
-const MyFilter = ({filterValues, changeFilterValues}: TMyFilterProps) => {
+const MyFilter = ({filterValues, changeFilterValues, updateFiltered}: TMyFilterProps) => {
 
   const marks = useMemo(() => {
     return getAllMarks(fakeAutoData);
@@ -38,13 +39,17 @@ const MyFilter = ({filterValues, changeFilterValues}: TMyFilterProps) => {
 
   const handleChangeMark = (event: SelectChangeEvent) => {
     const currentMark = { name: event.target.value as string };
-    changeFilterValues({ ...filterValues, ...currentMark })
+    changeFilterValues({ ...filterValues, ...currentMark });
+
+    updateFiltered(true);
   };
   const handleTypeChange = (
     event: React.SyntheticEvent<Element, Event>,
     value: string[]
   ) => {
     changeFilterValues({ ...filterValues, type: value })
+
+    updateFiltered(true);
   };
 
   const handleShopChange = (
@@ -52,6 +57,8 @@ const MyFilter = ({filterValues, changeFilterValues}: TMyFilterProps) => {
     value: string[]
   ) => {
     changeFilterValues({ ...filterValues, shop: value })
+
+    updateFiltered(true);
   };
 
   return (
@@ -78,8 +85,8 @@ const MyFilter = ({filterValues, changeFilterValues}: TMyFilterProps) => {
           <MenuItem
             value={""}
             onClick={() => {
-              // setFilterValues({ ...filterValues, name: "" })
               changeFilterValues({ ...filterValues, name: "" });
+              updateFiltered(true);
             }
           }
           >
@@ -99,23 +106,16 @@ const MyFilter = ({filterValues, changeFilterValues}: TMyFilterProps) => {
         <Autocomplete
           disablePortal
           isOptionEqualToValue={(option, value) => {
-            // console.log("option: ", option, "value: ", value);
             return option === value;
           }}
           value={filterValues.model}
           onChange={(event: any, newValue: string | null) => {
             const model = typeof newValue === "string" && newValue.length === 0 ? null : newValue;
-            // setFilterValues({
-            //   ...filterValues,
-            //   model:
-            //     typeof newValue === "string" && newValue.length === 0
-            //       ? null
-            //       : newValue,
-            // });
             changeFilterValues({
               ...filterValues,
               model
             });
+            updateFiltered(true);
           }}
           id="combo-box-demo"
           options={models}

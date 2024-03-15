@@ -6,31 +6,51 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TFakeAutoData } from "@/models/TFakeData";
+import { useRouter } from "next/navigation";
 
 type MyTableProps = {
   autoData: TFakeAutoData;
-}
+};
 
+const tableRowTitles = ["Марка", "ID", "Модель", "Тип", "Продано всего"];
 
-export default function MyTable({autoData}: MyTableProps) {
+export default function MyTable({ autoData }: MyTableProps) {
+  const router = useRouter();
+
+  const handleRowClick = (id: number) => {
+    const href = `/auto/${id}`;
+    router.push(href);
+  };
 
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Марка</TableCell>
-            <TableCell align="right">ID</TableCell>
-            <TableCell align="right">Модель</TableCell>
-            <TableCell align="right">Тип</TableCell>
-            <TableCell align="right">Продано всего</TableCell>
+            {tableRowTitles.map((title, index) => {
+              if (index === 0) {
+                return <TableCell key={index}>{title}</TableCell>;
+              }
+              return (
+                <TableCell key={index} align="right">
+                  {title}
+                </TableCell>
+              );
+            })}
           </TableRow>
         </TableHead>
         <TableBody>
           {autoData.map((auto) => (
             <TableRow
+              onClick={(() => handleRowClick(auto.id))}
               key={auto.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              sx={{ 
+                "&:last-child td, &:last-child th": { border: 0 }, 
+                cursor: "pointer",
+                "&:hover": {
+                  backgroundColor: "ivory"
+                }
+              }}
             >
               <TableCell component="th" scope="row">
                 {auto.name}

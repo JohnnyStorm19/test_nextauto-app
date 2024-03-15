@@ -4,13 +4,13 @@ import MyFilter from "@/components/Filter/MyFilter";
 import MyTable from "@/components/MyTable/MyTable";
 import { Container } from "@mui/material";
 import fakeAutoData from "../../data/data.json";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { TFilterState } from "@/models/TFilterState";
 import { TFakeAutoData } from "@/models/TFakeData";
+import MyChart from "@/components/MyChart/MyChart";
+import { registerCharts } from "@/components/MyChart/registerChart";
 
 const AutoPage = () => {
-  const prevFilterValuesRef = useRef<TFilterState>();
-
   const [filterValues, setFilterValues] = useState<TFilterState>({
     name: "",
     model: null,
@@ -18,14 +18,18 @@ const AutoPage = () => {
     shop: [],
   });
   const [filtered, setFiltered] = useState<TFakeAutoData>([...fakeAutoData]);
+  const [updateFiltered, setUpdateFiltered] = useState(false);
 
   const updateFilterValues = (obj: TFilterState) => {
     setFilterValues(obj);
   };
 
-  useEffect(() => {
-    console.log(filterValues);
-  }, [filterValues]);
+  // useEffect(() => {
+  //   console.log(filterValues);
+  //   console.log(updateFiltered)
+  // }, [filterValues, updateFiltered]);
+
+  registerCharts();
 
   useEffect(() => {
     const filteredData = fakeAutoData.filter((item) => {
@@ -40,23 +44,22 @@ const AutoPage = () => {
       );
     });
 
-    if (
-      JSON.stringify(filterValues) !==
-      JSON.stringify(prevFilterValuesRef.current)
-    ) {
+    if (updateFiltered) {
       setFiltered(filteredData);
+      setUpdateFiltered(false);
     }
 
-    prevFilterValuesRef.current = filterValues;
-  }, [filtered, filterValues]);
+  }, [filtered, filterValues, updateFiltered]);
 
   return (
     <Container maxWidth="xl">
       <MyFilter
         filterValues={filterValues}
         changeFilterValues={updateFilterValues}
+        updateFiltered={setUpdateFiltered}
       />
       <MyTable autoData={filtered} />
+      <MyChart />
     </Container>
   );
 };
